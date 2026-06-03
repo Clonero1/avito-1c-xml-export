@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Ads target="Avito.ru" formatVersion="3">
+  <Ad>
+    <Id>RS-00180081</Id>
+    <Title>Адаптер Caterpillar 1W2447</Title>
+    <Description><![CDATA[
+      <p>Адаптер Caterpillar 1W2447. В наличии. Доставка по России.</p>
+    ]]></Description>
+    <Price>10000</Price>
+    <OEM>1W2447</OEM>
+    <Images>
+      <Image url="https://site.ru/avito/images/RS-00180081_1.jpg"/>
+    </Images>
+    <Category>Запчасти и аксессуары</Category>
+    <GoodsType>Запчасти</GoodsType>
+    <AdType>Товар приобретен на продажу</AdType>
+    <ProductType>Для спецтехники</ProductType>
+    <SparePartType>Двигатели и комплектующие</SparePartType>
+    <TechnicSparePartType>Система охлаждения</TechnicSparePartType>
+    <Condition>Б/у</Condition>
+    <Availability>В наличии</Availability>
+  </Ad>
+</Ads>
