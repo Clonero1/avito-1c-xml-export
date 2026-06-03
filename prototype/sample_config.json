@@ -1,0 +1,28 @@
+{
+  "xml_path": "prototype/input/avito_autoload.xml",
+  "stock_xlsx_path": "prototype/input/stock.xlsx",
+  "output_dir": "prototype/output",
+  "stock_sheet_name": null,
+  "stock_header_row": null,
+  "columns": {
+    "code_1c": "Номенклатура.Код",
+    "article": "Артикул",
+    "producer": "Номенклатура.Производитель",
+    "alpha_code": "Код альфа",
+    "catalog_number_2": "Кат. номер2",
+    "nomenclature_guid": "Идентификатор номенклатуры",
+    "name": "Номенклатура",
+    "qty": "Остаток",
+    "price": null
+  },
+  "comparison": {
+    "strip_rn_suffix": true,
+    "remove_leading_zeroes_for_numeric_codes": true,
+    "use_catalog_number_2": true,
+    "aggregate_stock_by_1c_code": true
+  },
+  "xml": {
+    "update_price": false,
+    "preserve_order": true
+  }
+}

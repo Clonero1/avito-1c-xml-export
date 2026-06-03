@@ -1,0 +1,8 @@
+prototype/input/*.xml
+prototype/input/*.xlsx
+prototype/output/*.xml
+prototype/output/*.xlsx
+prototype/output/*.csv
+prototype/output/*.txt
+!prototype/input/README.md
+!prototype/output/.gitkeep
