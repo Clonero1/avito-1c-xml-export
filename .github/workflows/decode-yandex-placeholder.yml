@@ -1,0 +1,29 @@
+name: Decode Yandex image asset
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'assets/yandex/yandex_photo_updating_kinesis_square_23_07_2026.jpg.base64'
+
+permissions:
+  contents: write
+
+jobs:
+  decode-image:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Decode JPG
+        shell: bash
+        run: |
+          mkdir -p assets/yandex
+          base64 --decode assets/yandex/yandex_photo_updating_kinesis_square_23_07_2026.jpg.base64 > assets/yandex/yandex_photo_updating_kinesis_square_23_07_2026.jpg
+      - name: Commit JPG
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/yandex/yandex_photo_updating_kinesis_square_23_07_2026.jpg
+          git diff --cached --quiet || git commit -m "Add Yandex photo placeholder image"
+          git push
