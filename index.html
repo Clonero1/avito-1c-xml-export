@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="referrer" content="no-referrer">
+  <meta name="color-scheme" content="light">
+  <title>Фотографии изделия</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #f5f5f5; color: #282828; font-family: Arial, sans-serif; }
+    main { max-width: 1440px; margin: 0 auto; padding: 24px; }
+    h1 { margin: 0 0 24px; font-size: 22px; font-weight: 500; }
+    #photos { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; align-items: start; }
+    #photos.single { grid-template-columns: minmax(0, 860px); justify-content: center; }
+    figure { margin: 0; padding: 12px; background: white; border-radius: 8px; }
+    figure a { display: block; border-radius: 2px; }
+    figure a:focus-visible { outline: 3px solid #2365b2; outline-offset: 4px; }
+    img { display: block; width: 100%; height: auto; }
+    figcaption { margin: 12px 0 2px; color: #606060; font-size: 14px; }
+    #notice { margin: 10vh auto; max-width: 540px; font-size: 18px; line-height: 1.6; }
+    [hidden] { display: none !important; }
+    @media (max-width: 720px) {
+      main { padding: 16px 12px; }
+      h1 { margin-bottom: 16px; font-size: 20px; }
+      #photos { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+      figure { padding: 8px; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1 id="title" hidden></h1>
+    <p id="notice">Откройте фотографии по ссылке в перечне товаров.</p>
+    <div id="photos"></div>
+    <noscript><p>Для просмотра фотографий включите JavaScript в браузере.</p></noscript>
+  </main>
+  <script>
+    'use strict';
+    const galleries = {
+      "1003878": ["1003878.jpg"],
+      "2005972": ["2005972.jpg", "2005972-1.jpg"],
+      "2302633": ["2302633.jpg"],
+      "2979546": ["2979546.jpg", "2979546-1.jpg"],
+      "2995204": ["2995204.jpg", "2995204-1.jpg", "2995204-2.jpg"],
+      "3144130": ["3144130-1.jpg"],
+      "3145005": ["3145005.jpg", "3145005-1.jpg", "3145005-2.jpg"],
+      "3327331": ["3327331.jpg"],
+      "3631924": ["3631924.jpg", "3631924-1.jpg", "3631924-2.jpg"],
+      "3654922": ["3654922.jpg"],
+      "4243629": ["4243629.jpg", "4243629-1.jpg"],
+      "4364013": ["4364013.jpg", "4364013-1.jpg"],
+      "3P4057": ["3P4057.jpg", "3P4057-1.jpg"],
+      "6Y7219": ["6Y7219.jpg", "6Y7219-1.jpg"],
+      "7C7678": ["7C7678.jpg"],
+      "8X6833": ["8X6833.jpg"],
+      "9Y1741": ["9Y1741.jpg", "9Y1741-1.jpg"]
+    };
+    const article = (new URLSearchParams(location.search).get('article') || '').trim().toUpperCase();
+    if (Object.prototype.hasOwnProperty.call(galleries, article)) {
+      const files = galleries[article];
+      const title = document.getElementById('title');
+      const photos = document.getElementById('photos');
+      title.textContent = 'Артикул ' + article;
+      title.hidden = false;
+      document.title = article + ' — фотографии';
+      document.getElementById('notice').hidden = true;
+      photos.setAttribute('aria-label', 'Фотографии изделия ' + article);
+      if (files.length === 1) photos.classList.add('single');
+      files.forEach((file, index) => {
+        const figure = document.createElement('figure');
+        const link = document.createElement('a');
+        const img = document.createElement('img');
+        const caption = document.createElement('figcaption');
+        link.href = './photos/' + file;
+        link.setAttribute('aria-label', 'Фото ' + (index + 1) + ' — открыть в полном размере');
+        img.src = link.href;
+        img.alt = 'Артикул ' + article + ', фото ' + (index + 1);
+        img.decoding = 'async';
+        img.loading = index < 2 ? 'eager' : 'lazy';
+        caption.textContent = 'Фото ' + (index + 1);
+        link.appendChild(img);
+        figure.append(link, caption);
+        photos.appendChild(figure);
+      });
+    }
+  </script>
+</body>
+</html>
